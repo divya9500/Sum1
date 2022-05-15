@@ -1,0 +1,50 @@
+#Strong password
+package MyProject;
+import java.util.Scanner;
+public class Test  {
+    String cpw; static int q=0;
+    public static int  PassWord(String password){
+        int x = 0,y = 0,z = 0;
+        char a[]=password.toCharArray();
+        for(int i=0;i<password.length();i++){
+            if(a[i]>=65&&a[i]<=90){
+                x++;
+            }
+            if(a[i]>=97&&a[i]<=122 ){
+                y++;
+            }
+            if((a[i]>=34&&a[i]<47)||a[i]==64||a[i]==92){
+                z++;
+            }
+            }
+        if (x>=1 && y>=1 && z>=1) {
+            q = 1;
+        }
+        else{
+            q=0;
+        }
+       return q;
+    }
+    public static void main(String args[]){
+        String User_name,password,confirm_password;
+        Scanner s=new Scanner(System.in);
+        System.out.println("enter the user name:");
+        User_name=s.next();
+        System.out.println("enter the password: \nAt least 12 characters.\n" +
+                "A mixture of both uppercase and lowercase letters.\n" +
+                "A mixture of letters and numbers.\n" +
+                "Inclusion of at least one special character");
+        password= s.next();
+        PassWord(password);
+        while (q!=1){
+        if(q!=1){
+            System.out.println("enter the Strong password:");
+            String p=s.next();
+            password=p;
+            PassWord(password);
+        }
+        }
+        System.out.println("enter the conform password:");
+        confirm_password=s.next();
+    }
+}
